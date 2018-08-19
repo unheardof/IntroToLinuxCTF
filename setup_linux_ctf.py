@@ -4,35 +4,10 @@ import binascii
 import subprocess
 import random
 
+# TODO: Instead of running all commands as root, only run the commands that need it as root
+
 # Pull in the common constants and helper functions
 import common
-
-ORDERED_FLAGS = [ "14a15eff3d54b4cc17d7467f3d60bfa8",
-                  "e60cdc332b773c8cbdb3125d923862eb",
-                  "968e96d318ad1d755268ff566b514fac",
-                  "1b300af8e00fed12d5b9bbb189bc4766",
-                  "e1d7462a4a091de52137279602d8b9c1",
-                  "22e0443c1fbc54f646f08ef6f37c2014",
-                  "620b59a6c9a8751a5437ced2acb97d83",
-                  "4fa0df5ebbf1d416d9e82ad6715255c3",
-                  "6d44080c36d4be4e52b31cd52346aaef",
-                  "9ef853ca5fc74b817351adaa1dd5cc39",
-                  "f8368bbc48d1c24b2321b26067e91927",
-                  "335ce221120c49006df97c546ddaff42",
-                  "b4d616f075d9e957426dbd2e2217587d",
-                  "ffe5086f8ad902d3954993186bac4cb1",
-                  "77bfededbf91888e5d67467547ead72d",
-                  "21617ae04c2ad40a4faefe2df688b755",
-                  "71b101e6ade6daba356b6bc63c20d44c",
-                  "8fcce0e7e4abecadaf646c89ac043381",
-                  "b34ce27577e3bd1b8a23b62476892e1b",
-                  "18b190bdf56fb20c1c620851a33ecef3",
-                  "a4748e789ca194eaee41390ba1b78b5d",
-                  "cf4a3de914aef344a9f95d3ab66fe0ee",
-                  "b2eec79abe630d42302d5208459f5acf",
-                  "790bd0f329cdd4f6f957b6bffb24ea5c",
-                  "0b1bd73344376dc00bd736bb946b340b",
-                  ]
 
 # TODO: Create an interface for getting to all of the flag hints (?)
 #       Otherwise, provide a starting point that gives the first hint and have each subsequent flag also provide the next hint
@@ -71,7 +46,7 @@ FLAG_HINTS = [
 ###
 
 def get_flag(flag_number):
-    return ORDERED_FLAGS[flag_number - 1]
+    return common.ORDERED_FLAGS[flag_number - 1]
 
 def get_formatted_flag_line(flag_number):
     return "flag #%d: %s\n" % (flag_number, get_flag(flag_number))
@@ -144,7 +119,7 @@ def generate_flag_17_script_contents():
 
 def generate_flag_23_script_contents():
     return """
-    IP=$( ifconfig eth0 | grep "inet addr" | awk '{print $2}' | awk -F ':' '{print $2}' )
+    IP=$( ip -o -4 a | awk '$2 == "eth0" { gsub(/\/.*/, "", $4); print $4 }' | head -n 1 )
 
     if [ "$1" == $IP ]; then
         echo "%s" | base64 -d; echo ''

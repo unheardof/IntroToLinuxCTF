@@ -6,6 +6,33 @@ import os
 # Constants
 USER_HOME_DIR = os.path.expanduser('~')
 
+ORDERED_FLAGS = [ "14a15eff3d54b4cc17d7467f3d60bfa8",
+                  "e60cdc332b773c8cbdb3125d923862eb",
+                  "968e96d318ad1d755268ff566b514fac",
+                  "1b300af8e00fed12d5b9bbb189bc4766",
+                  "e1d7462a4a091de52137279602d8b9c1",
+                  "22e0443c1fbc54f646f08ef6f37c2014",
+                  "620b59a6c9a8751a5437ced2acb97d83",
+                  "4fa0df5ebbf1d416d9e82ad6715255c3",
+                  "6d44080c36d4be4e52b31cd52346aaef",
+                  "9ef853ca5fc74b817351adaa1dd5cc39",
+                  "f8368bbc48d1c24b2321b26067e91927",
+                  "335ce221120c49006df97c546ddaff42",
+                  "b4d616f075d9e957426dbd2e2217587d",
+                  "ffe5086f8ad902d3954993186bac4cb1",
+                  "77bfededbf91888e5d67467547ead72d",
+                  "21617ae04c2ad40a4faefe2df688b755",
+                  "71b101e6ade6daba356b6bc63c20d44c",
+                  "8fcce0e7e4abecadaf646c89ac043381",
+                  "b34ce27577e3bd1b8a23b62476892e1b",
+                  "18b190bdf56fb20c1c620851a33ecef3",
+                  "a4748e789ca194eaee41390ba1b78b5d",
+                  "cf4a3de914aef344a9f95d3ab66fe0ee",
+                  "b2eec79abe630d42302d5208459f5acf",
+                  "790bd0f329cdd4f6f957b6bffb24ea5c",
+                  "0b1bd73344376dc00bd736bb946b340b",
+                  ]
+
 HINTS_FILE = os.path.join(USER_HOME_DIR, 'hints.txt')
 
 FLAG_FILE_1 = '/tmp/flag_1.txt'
