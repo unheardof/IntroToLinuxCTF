@@ -4,6 +4,8 @@ import binascii
 import subprocess
 import random
 
+# TODO: Put all flag scripts into a single folder (~/scripts) and print instructions at the start to run any scripts which relate to the flag you are currently looking for (maybe create scripts for all of them, and for ones that are hints only, just have them print the hint for that flag [and clarify that the flag is stored elsewhere])
+
 # TODO: Instead of running all commands as root, only run the commands that need it as root
 
 # Pull in the common constants and helper functions
